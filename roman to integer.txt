@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+int value(char c);
+int convert(string s);
+
+int value(char c)
+{
+    switch(c)
+    {
+        case 'I': return 1;
+    
+        case 'V': return 5;
+        
+        case 'X': return 10;
+        
+        case 'L' : return 50;
+        
+        case 'C':return 100;
+       
+        case 'D':return 500;
+        
+        case 'M':return 1000;
+      
+    }
+}
+int convert(string s)
+{
+        int n ,p=0 ,result=0;
+        n=s.length()-1;
+        for(int i=n;i>=0;i--)
+        {
+           if(value(s[i])>=p)
+           {
+               result+=value(s[i]);
+        
+           }
+           else
+           {
+               result=result-value(s[i]);
+           }
+         p=value(s[i]);   
+        }
+        return result;
+    
+}
+int main() {
+    int t;
+    string s;
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {   
+        cin>>s;
+        int integervalue=convert(s);
+        cout<<integervalue<<"\n";
+    }
+     
+	//code
+	return 0;
+}
